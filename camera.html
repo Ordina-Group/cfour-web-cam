@@ -20,7 +20,9 @@
       var canvas = document.getElementById('canvas');
       var context = canvas.getContext('2d');
       var video = document.getElementById('video');
-      var mediaConfig =  { video: true };
+      //var mediaConfig =  { video: true };
+        //faceing mode: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+       var mediaConfig =  {video: { facingMode: "environment" } };
       var errBack = function(e) {
         console.log('An error has occurred!', e)
       };
@@ -53,7 +55,7 @@
         context.drawImage(video, 0, 0, 640, 480);
           //base64 format
         var dataURL = canvas.toDataURL();
-          console.log("TODO upload to server");
+          
           //          
           xhr = new XMLHttpRequest();
         //  var server = "http://localhost:8080"

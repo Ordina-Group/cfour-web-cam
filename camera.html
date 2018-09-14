@@ -51,8 +51,21 @@
       // Trigger photo take
       document.getElementById('snap').addEventListener('click', function() {
         context.drawImage(video, 0, 0, 640, 480);
+          //base64 format
+        var dataURL = canvas.toDataURL();
           console.log("TODO upload to server");
-          //http://cfour-web-jworks-dev.origin.ordina-jworks.io/solveForImage
+          //          
+          xhr = new XMLHttpRequest();
+        //  var server = "http://localhost:8080"
+          var server = "http://cfour-web-jworks-dev.origin.ordina-jworks.io";
+          var endpoint = "/solveForBase64"
+//var url = "http://cfour-web-jworks-dev.origin.ordina-jworks.io/solveForBase64";
+          var url = server + endpoint;
+xhr.open("POST", url, true);
+//xhr.setRequestHeader("Content-type", "application/json");
+//var data = JSON.stringify({"email":"tomb@raider.com","name":"LaraCroft"});
+xhr.send(dataURL);          
+          
       });
     }, false);
     </script>
